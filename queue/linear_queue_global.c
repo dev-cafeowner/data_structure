@@ -6,7 +6,7 @@
 typedef int element;
 
 // 1. 전역 변수로 큐 메모리 및 위치 변수 선언
-element queue[MAX_SIZE];
+element data[MAX_SIZE];
 int front = -1; // 데이터가 나가는 쪽(삭제)의 인덱스를 가리킴
 int rear = -1;  // 데이터가 들어오는 쪽(삽입)의 마지막 인덱스를 가리킴
 
@@ -33,7 +33,7 @@ void enqueue(element item)
     else 
     {
         // rear를 1 증가시킨 후, 그 자리에 데이터를 넣습니다.
-        queue[++rear] = item;
+        data[++rear] = item;
     }
 }
 
@@ -48,7 +48,7 @@ element dequeue()
     else 
     {
         // front를 1 증가시킨 후, 그 자리의 데이터를 반환합니다.
-        return queue[++front];
+        return data[++front];
     }
 }
 
@@ -64,7 +64,7 @@ element peek()
     {
         // 데이터를 빼지 않으므로 front 변수를 증가시키지 않고 값만 읽어옵니다.
         // front는 '마지막으로 꺼낸 위치'를 가리키므로, 다음 꺼낼 데이터는 front + 1에 있습니다.
-        return queue[front + 1];
+        return data[front + 1];
     }
 }
 
@@ -76,6 +76,7 @@ int main()
     enqueue(30);
 
     // 데이터 추출 (FIFO: 대기줄에 가장 먼저 선 10부터 출력됨)
+    printf("%d\n", peek()); // 10 출력
     printf("%d\n", dequeue()); // 10 출력
     printf("%d\n", dequeue()); // 20 출력
     printf("%d\n", dequeue()); // 30 출력
